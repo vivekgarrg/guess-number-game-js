@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Guess The Number Game</title>
+</head>
+<body>
+    <h1 id="head">Number Guessing Game</h1>
+    <div class="box">
+       
+        <h2 class="sub_heading">Please enter the number between 1 to 100</h2>
+        <h2 class="sub_heading">Total chance is 10</h2>
+        <h1 class="main_heading">Guess a number</h1> 
+        <input id="num" type="number" name="num" required>
+    <br>
+    <button id="btn" onclick="myFun()">Submit</button>
+    
+    <p id="chance">Chance Remaining:<span id="count"></span></p>
+    <p id="result"></p>
+
+    <p id="footer">Made by : Vivek</p>
+</div>
+
+    <script>
+        var total_count = 10;
+        var count = 1;
+        var y = Math.floor(Math.random() * 100);
+         console.log(y);
+        document.getElementById("count").innerHTML = total_count;
+        function myFun()
+        {
+        if(count <= 10){
+
+       
+         let x = parseInt(document.getElementById("num").value); 
+         
+         if(x<1 || x>100)
+            {
+                document.getElementById("result").innerHTML = "out of the range";
+                document.getElementById("count").innerHTML = total_count -count;
+                count++;
+            }
+            else if(x==y)
+            {
+                document.getElementById("result").innerHTML = "You win the game";
+                document.getElementById("count").innerHTML = total_count -count;   
+                document.getElementById("num").disabled = true;
+                alert("You Win");
+            }
+            else if(x<y)
+            {
+                document.getElementById("result").innerHTML = "Uhh !! Less than the number";
+                document.getElementById("count").innerHTML = total_count -count;
+                count++;
+            }
+            else if(x>y)
+            {
+                document.getElementById("result").innerHTML = "Too close !! Greater than the number"; 
+                document.getElementById("count").innerHTML = total_count -count;
+                count++;
+            }
+        }
+        }
+    </script>
+</body>
+</html>
